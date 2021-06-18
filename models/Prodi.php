@@ -38,7 +38,7 @@ class Prodi extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
+            'id_prodi' => 'ID',
             'prodi' => 'Prodi',
             'keterangan' => 'Keterangan',
         ];

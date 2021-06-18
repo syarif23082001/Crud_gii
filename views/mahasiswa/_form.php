@@ -32,9 +32,10 @@ use kartik\date\DatePicker;
         'autoclose'=>true,
         'format' => 'yyyy-mm-dd'
     ]
-]); ?>
+    ]); ?>
 
-    <?= $form->field($model, 'id_prodi')->textInput() ?>
+    <?= $form->field($model, 'id_prodi')->dropDownList($id_prodi,['prompt'=>'-Pilih Prodi-'])
+    ->label('id_prodi')?>
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 

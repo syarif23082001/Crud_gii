@@ -5,7 +5,9 @@ namespace app\controllers;
 use Yii;
 use app\models\Mahasiswa;
 use app\models\MahasiswaSearch;
+use app\models\Prodi;
 use yii\web\Controller;
+use yii\helpers\ArrayHelper;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
@@ -65,13 +67,15 @@ class MahasiswaController extends Controller
     public function actionCreate()
     {
         $model = new Mahasiswa();
-
+        $id_prodi = prodi::find()->all();
+        $id_prodi = ArrayHelper::map($id_prodi,'id_prodi','prodi');
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
             'model' => $model,
+            'id_prodi' => $id_prodi
         ]);
     }
 
@@ -85,13 +89,15 @@ class MahasiswaController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
+        $id_prodi = prodi::find()->all();
+        $id_prodi = ArrayHelper::map($id_prodi,'id_prodi','nama_prodi');
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
             'model' => $model,
+            'id_prodi' => $id_prodi
         ]);
     }
 

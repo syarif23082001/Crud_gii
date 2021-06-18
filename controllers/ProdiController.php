@@ -50,10 +50,10 @@ class ProdiController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id)
+    public function actionView($id_prodi)
     {
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $this->findModel($id_prodi),
         ]);
     }
 
@@ -67,7 +67,7 @@ class ProdiController extends Controller
         $model = new Prodi();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['view', 'id_prodi' => $model->id_prodi]);
         }
 
         return $this->render('create', [
@@ -82,12 +82,12 @@ class ProdiController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id)
+    public function actionUpdate($id_prodi)
     {
-        $model = $this->findModel($id);
+        $model = $this->findModel($id_prodi);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['view', 'id_prodi' => $model->id_prodi]);
         }
 
         return $this->render('update', [
@@ -102,9 +102,9 @@ class ProdiController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
+    public function actionDelete($id_prodi)
     {
-        $this->findModel($id)->delete();
+        $this->findModel($id_prodi)->delete();
 
         return $this->redirect(['index']);
     }
@@ -116,9 +116,9 @@ class ProdiController extends Controller
      * @return Prodi the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
+    protected function findModel($id_prodi)
     {
-        if (($model = Prodi::findOne($id)) !== null) {
+        if (($model = Prodi::findOne($id_prodi)) !== null) {
             return $model;
         }
 
