@@ -19,6 +19,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'prodi') ?>
 
+    <?= $form->field($model, 'id_fakultas') ?>
+
     <?= $form->field($model, 'keterangan') ?>
 
     <div class="form-group">

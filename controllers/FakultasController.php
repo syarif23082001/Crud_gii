@@ -3,17 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\mahasiswa;
-use app\models\MahasiswaSearch;
-use app\models\Prodi;
+use app\models\Fakultas;
+use app\models\FakultasSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * MahasiswaController implements the CRUD actions for Mahasiswa model.
+ * FakultasController implements the CRUD actions for Fakultas model.
  */
-class MahasiswaController extends Controller
+class FakultasController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -31,12 +30,12 @@ class MahasiswaController extends Controller
     }
 
     /**
-     * Lists all Mahasiswa models.
+     * Lists all Fakultas models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new MahasiswaSearch();
+        $searchModel = new FakultasSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -46,7 +45,7 @@ class MahasiswaController extends Controller
     }
 
     /**
-     * Displays a single Mahasiswa model.
+     * Displays a single Fakultas model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -59,16 +58,16 @@ class MahasiswaController extends Controller
     }
 
     /**
-     * Creates a new Mahasiswa model.
+     * Creates a new Fakultas model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Mahasiswa();
+        $model = new Fakultas();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['view', 'id' => $model->id_fakultas]);
         }
 
         return $this->render('create', [
@@ -77,7 +76,7 @@ class MahasiswaController extends Controller
     }
 
     /**
-     * Updates an existing Mahasiswa model.
+     * Updates an existing Fakultas model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -88,7 +87,7 @@ class MahasiswaController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['view', 'id' => $model->id_fakultas]);
         }
 
         return $this->render('update', [
@@ -97,7 +96,7 @@ class MahasiswaController extends Controller
     }
 
     /**
-     * Deletes an existing Mahasiswa model.
+     * Deletes an existing Fakultas model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -110,32 +109,16 @@ class MahasiswaController extends Controller
         return $this->redirect(['index']);
     }
 
-    public function actionSubcat()
-    {
-        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-        $out = [];
-        if (isset($_POST['depdrop_parents'])) {
-            $parents = $_POST['depdrop_parents'];
-            if ($parents != null) {
-                $prodi = $parents[0];
-                $out = Prodi::getProdiList($prodi);
-
-                return ['output'=>$out,'selected'=>''];
-            }
-        }
-        return ['output'=>'','selected'=>''];
-    }
-    
     /**
-     * Finds the Mahasiswa model based on its primary key value.
+     * Finds the Fakultas model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Mahasiswa the loaded model
+     * @return Fakultas the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Mahasiswa::findOne($id)) !== null) {
+        if (($model = Fakultas::findOne($id)) !== null) {
             return $model;
         }
 

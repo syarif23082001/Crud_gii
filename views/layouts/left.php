@@ -31,6 +31,27 @@
                 'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
                 'items' => [
                     ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
+                    ['label' => 'Dashboard', 'icon' => 'fa fa-dashboard', 
+                        'url' => ['/'], 'active' => $this->context->route == 'site/index'],
+                    [
+                            'label' => 'Master',
+                            'icon' => 'fa fa-database',
+                            'url' => '#',
+                            'items' => [
+                                [
+                                    'label' => 'Mahasiswa',
+                                    'icon' => 'fa fa-database',
+                                    'url' => 'mahasiswa/',
+                                    'active' => $this->context->route == 'mahasiswa/index'
+                                ],
+                                [
+                                    'label' => 'Master2',
+                                    'icon' => 'fa fa-database',
+                                    'url' => '?r=master2/',
+                                    'active' => $this->context->route == 'master2/index'
+                                ]
+                            ]
+                        ],
                     ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
                     ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
                     ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],

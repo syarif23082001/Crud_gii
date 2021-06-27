@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Prodi;
+use app\models\Fakultas;
 
 /**
- * ProdiSearch represents the model behind the search form of `app\models\Prodi`.
+ * FakultasSearch represents the model behind the search form of `app\models\Fakultas`.
  */
-class ProdiSearch extends Prodi
+class FakultasSearch extends Fakultas
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class ProdiSearch extends Prodi
     public function rules()
     {
         return [
-            [['id_prodi', 'id_fakultas'], 'integer'],
-            [['prodi', 'keterangan'], 'safe'],
+            [['id_fakultas'], 'integer'],
+            [['nama_fakultas'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class ProdiSearch extends Prodi
      */
     public function search($params)
     {
-        $query = Prodi::find();
+        $query = Fakultas::find();
 
         // add conditions that should always apply here
 
@@ -58,12 +58,10 @@ class ProdiSearch extends Prodi
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id_prodi' => $this->id_prodi,
             'id_fakultas' => $this->id_fakultas,
         ]);
 
-        $query->andFilterWhere(['like', 'prodi', $this->prodi])
-            ->andFilterWhere(['like', 'keterangan', $this->keterangan]);
+        $query->andFilterWhere(['like', 'nama_fakultas', $this->nama_fakultas]);
 
         return $dataProvider;
     }
