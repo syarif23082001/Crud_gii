@@ -10,11 +10,12 @@ $config = [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
+        '@adminlte/widgets'=>'@vendor/adminlte/yii2-widgets',
     ],
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => '1911081003',
+            'cookieValidationKey' => '0hlFS0bYdbErUv7ynzAouADCqUsSY-91',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -43,14 +44,12 @@ $config = [
             ],
         ],
         'db' => $db,
-        
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
         ],
-        
     ],
     'params' => $params,
 ];

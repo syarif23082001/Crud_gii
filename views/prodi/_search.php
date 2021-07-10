@@ -15,11 +15,11 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id_prodi') ?>
-
-    <?= $form->field($model, 'prodi') ?>
+    <?= $form->field($model, 'id') ?>
 
     <?= $form->field($model, 'id_fakultas') ?>
+
+    <?= $form->field($model, 'prodi') ?>
 
     <?= $form->field($model, 'keterangan') ?>
 

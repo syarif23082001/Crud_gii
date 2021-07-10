@@ -54,18 +54,32 @@ class SiteController extends Controller
             ],
         ];
     }
-    public function actionHello1($nama="Syarif Hidayat")
+
+    public function actionHello1($nama = "Aulia")
     {
-        return "<h2>Hello " . $nama . "</h2>";
+        return "<h2>Hello ". $nama . "</h2>";
     }
+
     public function actionHello2()
     {
         return $this->render('say',['pesan'=>'Hello World']);
     }
+
     public function actionFitur()
     {
-        return $this->render('fitur');
+        return $this -> render('fitur');
     }
+
+    public function actionMahasiswa()
+    {
+        return $this -> render('mahasiswa');
+    }
+
+    public function actionProdi()
+    {
+        return $this -> render('prodi');
+    }
+
     /**
      * Displays homepage.
      *
@@ -79,13 +93,17 @@ class SiteController extends Controller
     public function actionEntry()
     {
         $model = new EntryForm();
-        if ($model->load(Yii::$app->request->post()) && $model->validate()){
-    
-    return $this->render('entry-confirm', ['model' => $model]);}
-    else {
-        return $this->render('entry',['model' => $model]);
+
+        if ($model -> load(Yii::$app->request->post()) && $model->validate())
+        {
+            return $this->render('entry-confirm',['model' => $model]);
+        }
+        else 
+        {
+            return $this->render('entry', ['model' => $model]);
+        }
     }
-    }
+
     /**
      * Login action.
      *

@@ -25,11 +25,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id_jenis') ?>
 
-    <?php // echo $form->field($model, 'id_supplier') ?>
+    <?php echo $form->field($model, 'id_supplier') ?>
 
-    <?php // echo $form->field($model, 'harga') ?>
+    <?php echo $form->field($model, 'harga') ?>
 
-    <?php // echo $form->field($model, 'stok') ?>
+    <?php echo $form->field($model, 'stok') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

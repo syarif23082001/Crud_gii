@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Supplier;
+use app\models\supplier;
 
 /**
- * SupplierSearch represents the model behind the search form of `app\models\Supplier`.
+ * SupplierSearch represents the model behind the search form of `app\models\supplier`.
  */
-class SupplierSearch extends Supplier
+class SupplierSearch extends supplier
 {
     /**
      * {@inheritdoc}
@@ -40,7 +40,7 @@ class SupplierSearch extends Supplier
      */
     public function search($params)
     {
-        $query = Supplier::find();
+        $query = supplier::find();
 
         // add conditions that should always apply here
 

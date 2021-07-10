@@ -15,6 +15,9 @@ use Yii;
  * @property int $id_supplier
  * @property float $harga
  * @property int $stok
+ *
+ * @property Jenis $jenis
+ * @property Supplier $supplier
  */
 class Barang extends \yii\db\ActiveRecord
 {
@@ -38,6 +41,8 @@ class Barang extends \yii\db\ActiveRecord
             [['kode_barang'], 'string', 'max' => 10],
             [['nama_barang'], 'string', 'max' => 50],
             [['satuan'], 'string', 'max' => 20],
+            [['id_jenis'], 'exist', 'skipOnError' => true, 'targetClass' => Jenis::className(), 'targetAttribute' => ['id_jenis' => 'id']],
+            [['id_supplier'], 'exist', 'skipOnError' => true, 'targetClass' => Supplier::className(), 'targetAttribute' => ['id_supplier' => 'id']],
         ];
     }
 
@@ -56,5 +61,25 @@ class Barang extends \yii\db\ActiveRecord
             'harga' => 'Harga',
             'stok' => 'Stok',
         ];
+    }
+
+    /**
+     * Gets query for [[Jenis]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getJenis()
+    {
+        return $this->hasOne(Jenis::className(), ['id' => 'id_jenis']);
+    }
+
+    /**
+     * Gets query for [[Supplier]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getSupplier()
+    {
+        return $this->hasOne(Supplier::className(), ['id' => 'id_supplier']);
     }
 }

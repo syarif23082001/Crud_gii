@@ -3,14 +3,14 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Barang;
+use app\models\barang;
 use app\models\BarangSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * BarangController implements the CRUD actions for Barang model.
+ * BarangController implements the CRUD actions for barang model.
  */
 class BarangController extends Controller
 {
@@ -30,7 +30,7 @@ class BarangController extends Controller
     }
 
     /**
-     * Lists all Barang models.
+     * Lists all barang models.
      * @return mixed
      */
     public function actionIndex()
@@ -45,7 +45,7 @@ class BarangController extends Controller
     }
 
     /**
-     * Displays a single Barang model.
+     * Displays a single barang model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,13 +58,13 @@ class BarangController extends Controller
     }
 
     /**
-     * Creates a new Barang model.
+     * Creates a new barang model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Barang();
+        $model = new barang();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -76,7 +76,7 @@ class BarangController extends Controller
     }
 
     /**
-     * Updates an existing Barang model.
+     * Updates an existing barang model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -96,7 +96,7 @@ class BarangController extends Controller
     }
 
     /**
-     * Deletes an existing Barang model.
+     * Deletes an existing barang model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -110,15 +110,15 @@ class BarangController extends Controller
     }
 
     /**
-     * Finds the Barang model based on its primary key value.
+     * Finds the barang model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Barang the loaded model
+     * @return barang the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Barang::findOne($id)) !== null) {
+        if (($model = barang::findOne($id)) !== null) {
             return $model;
         }
 

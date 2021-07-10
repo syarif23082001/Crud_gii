@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Barang;
+use app\models\barang;
 
 /**
- * BarangSearch represents the model behind the search form of `app\models\Barang`.
+ * BarangSearch represents the model behind the search form of `app\models\barang`.
  */
-class BarangSearch extends Barang
+class BarangSearch extends barang
 {
     /**
      * {@inheritdoc}
@@ -41,7 +41,7 @@ class BarangSearch extends Barang
      */
     public function search($params)
     {
-        $query = Barang::find();
+        $query = barang::find();
 
         // add conditions that should always apply here
 

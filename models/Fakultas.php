@@ -7,10 +7,10 @@ use Yii;
 /**
  * This is the model class for table "fakultas".
  *
- * @property int $id_fakultas
+ * @property int $id
  * @property string $nama_fakultas
  *
- * @property Mahasiswa[] $mahasiswas
+ * @property Pelajar[] $pelajars
  * @property Prodi[] $prodis
  */
 class Fakultas extends \yii\db\ActiveRecord
@@ -25,8 +25,9 @@ class Fakultas extends \yii\db\ActiveRecord
 
     public static function getFakultas()
     {
-        return Self::find()->select(['nama_fakultas', 'id_fakultas'])->indexBy('id_fakultas')->column();
+        return Self::find()->select(['nama_fakultas', 'id'])->indexBy('id')->column();
     }
+
     /**
      * {@inheritdoc}
      */
@@ -34,7 +35,7 @@ class Fakultas extends \yii\db\ActiveRecord
     {
         return [
             [['nama_fakultas'], 'required'],
-            [['nama_fakultas'], 'string', 'max' => 50],
+            [['nama_fakultas'], 'string', 'max' => 100],
         ];
     }
 
@@ -44,28 +45,25 @@ class Fakultas extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_fakultas' => 'Id Fakultas',
+            'id' => 'ID',
             'nama_fakultas' => 'Nama Fakultas',
         ];
     }
 
     /**
-     * Gets query for [[Mahasiswas]].
+     * Gets query for [[Pelajars]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getMahasiswas()
-    {
-        return $this->hasMany(Mahasiswa::className(), ['id_fakultas' => 'id_fakultas']);
-    }
 
+    public function getMahasiswa()
+    {
+        
+        return $this->hasOne(Mahasiswa::className(),['id_fakultas'=>'id']);
+    }
     /**
      * Gets query for [[Prodis]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getProdis()
-    {
-        return $this->hasMany(Prodi::className(), ['id_fakultas' => 'id_fakultas']);
-    }
 }

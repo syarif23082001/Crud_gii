@@ -31,9 +31,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'nama_barang',
             'satuan',
             'id_jenis',
-            //'id_supplier',
-            //'harga',
-            //'stok',
+            'id_supplier',
+            'harga',
+            'stok',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

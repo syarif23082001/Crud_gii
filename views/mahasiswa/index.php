@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 
+
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\MahasiswaSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -26,15 +27,16 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            //'id',
             'nim',
             'nama',
+            'tgl_lahir',
             'jekel',
-            'id_fakultas',
-            'id_prodi',
+            'fakultas.nama_fakultas',
+            'prodi.prodi',
+            'prodi.keterangan',
             'email:email',
             'alamat',
-            'tgl_lahir',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

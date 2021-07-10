@@ -10,6 +10,8 @@ use Yii;
  * @property int $id
  * @property string $nama_jenis
  * @property string $keterangan
+ *
+ * @property Barang[] $barangs
  */
 class Jenis extends \yii\db\ActiveRecord
 {
@@ -42,5 +44,15 @@ class Jenis extends \yii\db\ActiveRecord
             'nama_jenis' => 'Nama Jenis',
             'keterangan' => 'Keterangan',
         ];
+    }
+
+    /**
+     * Gets query for [[Barangs]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getBarangs()
+    {
+        return $this->hasMany(Barang::className(), ['id_jenis' => 'id']);
     }
 }

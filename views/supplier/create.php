@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Supplier */
+/* @var $model app\models\supplier */
 
 $this->title = 'Create Supplier';
 $this->params['breadcrumbs'][] = ['label' => 'Suppliers', 'url' => ['index']];

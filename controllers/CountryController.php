@@ -1,16 +1,20 @@
-<?php
+<?php  
 namespace app\controllers;
 use yii\web\Controller;
 use yii\data\Pagination;
 use app\models\Country;
 
+/**
+ * 
+ */
 class CountryController extends Controller
 {
+	
 	public function actionIndex()
 	{
+		# code...
 		$query = Country::find();
-		$pagination = new Pagination([
-			'defaultPageSize' => 5,
+		$pagination = new Pagination(['defaultPageSize' => 5, 
 			'totalCount' => $query->count(),
 		]);
 		$countries = $query->orderBy('name')
@@ -18,8 +22,9 @@ class CountryController extends Controller
 			->limit($pagination->limit)
 			->all();
 		return $this->render('index', [
-			'countries' =>$countries,
-			'pagination' =>$pagination,
+			'countries' => $countries, 
+			'pagination' => $pagination,
 		]);
-	}	
+	}
 }
+?>

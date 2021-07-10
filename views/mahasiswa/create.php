@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Mahasiswa */
+/* @var $model app\models\mahasiswa */
 
 $this->title = 'Create Mahasiswa';
 $this->params['breadcrumbs'][] = ['label' => 'Mahasiswas', 'url' => ['index']];

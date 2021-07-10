@@ -11,7 +11,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * MahasiswaController implements the CRUD actions for Mahasiswa model.
+ * MahasiswaController implements the CRUD actions for mahasiswa model.
  */
 class MahasiswaController extends Controller
 {
@@ -31,7 +31,7 @@ class MahasiswaController extends Controller
     }
 
     /**
-     * Lists all Mahasiswa models.
+     * Lists all mahasiswa models.
      * @return mixed
      */
     public function actionIndex()
@@ -46,7 +46,7 @@ class MahasiswaController extends Controller
     }
 
     /**
-     * Displays a single Mahasiswa model.
+     * Displays a single mahasiswa model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -59,15 +59,17 @@ class MahasiswaController extends Controller
     }
 
     /**
-     * Creates a new Mahasiswa model.
+     * Creates a new mahasiswa model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Mahasiswa();
+        $model = new mahasiswa();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $model->tgl_lahir = \Yii::$app->formatter->asDate($model->tgl_lahir, "yyyy-MM-dd");
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -77,7 +79,7 @@ class MahasiswaController extends Controller
     }
 
     /**
-     * Updates an existing Mahasiswa model.
+     * Updates an existing mahasiswa model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -86,8 +88,10 @@ class MahasiswaController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
+        $model->tgl_lahir = date('d-M-y', strtotime($model->tgl_lahir));
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $model->tgl_lahir = \Yii::$app->formatter->asDate($model->tgl_lahir, "yyyy-MM-dd");
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -97,7 +101,7 @@ class MahasiswaController extends Controller
     }
 
     /**
-     * Deletes an existing Mahasiswa model.
+     * Deletes an existing mahasiswa model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -125,20 +129,21 @@ class MahasiswaController extends Controller
         }
         return ['output'=>'','selected'=>''];
     }
-    
+
     /**
-     * Finds the Mahasiswa model based on its primary key value.
+     * Finds the mahasiswa model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Mahasiswa the loaded model
+     * @return mahasiswa the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Mahasiswa::findOne($id)) !== null) {
+        if (($model = mahasiswa::findOne($id)) !== null) {
             return $model;
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
 }

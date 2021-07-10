@@ -3,14 +3,14 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Supplier;
+use app\models\supplier;
 use app\models\SupplierSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * SupplierController implements the CRUD actions for Supplier model.
+ * SupplierController implements the CRUD actions for supplier model.
  */
 class SupplierController extends Controller
 {
@@ -30,7 +30,7 @@ class SupplierController extends Controller
     }
 
     /**
-     * Lists all Supplier models.
+     * Lists all supplier models.
      * @return mixed
      */
     public function actionIndex()
@@ -45,7 +45,7 @@ class SupplierController extends Controller
     }
 
     /**
-     * Displays a single Supplier model.
+     * Displays a single supplier model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,13 +58,13 @@ class SupplierController extends Controller
     }
 
     /**
-     * Creates a new Supplier model.
+     * Creates a new supplier model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Supplier();
+        $model = new supplier();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -76,7 +76,7 @@ class SupplierController extends Controller
     }
 
     /**
-     * Updates an existing Supplier model.
+     * Updates an existing supplier model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -96,7 +96,7 @@ class SupplierController extends Controller
     }
 
     /**
-     * Deletes an existing Supplier model.
+     * Deletes an existing supplier model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -110,15 +110,15 @@ class SupplierController extends Controller
     }
 
     /**
-     * Finds the Supplier model based on its primary key value.
+     * Finds the supplier model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Supplier the loaded model
+     * @return supplier the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Supplier::findOne($id)) !== null) {
+        if (($model = supplier::findOne($id)) !== null) {
             return $model;
         }
 

@@ -12,6 +12,8 @@ use Yii;
  * @property string $notelp
  * @property string $email
  * @property string $alamat
+ *
+ * @property Barang[] $barangs
  */
 class Supplier extends \yii\db\ActiveRecord
 {
@@ -49,5 +51,15 @@ class Supplier extends \yii\db\ActiveRecord
             'email' => 'Email',
             'alamat' => 'Alamat',
         ];
+    }
+
+    /**
+     * Gets query for [[Barangs]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getBarangs()
+    {
+        return $this->hasMany(Barang::className(), ['id_supplier' => 'id']);
     }
 }
